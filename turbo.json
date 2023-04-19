@@ -1,0 +1,37 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "dependsOn": ["^storybook"],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["^test"]
+    },
+    "svgr:monochrome": {
+      "dependsOn": ["^svgr"]
+    },
+    "svgr:colored": {
+      "dependsOn": ["^svgr"]
+    },
+    "svgr": {
+      "dependsOn": ["^svgr:monochrome","^svgr:colored","^svgr"]
+    },
+    "storybook": {
+      "dependsOn": ["^storybook"]
+    }
+  },
+  "globalDependencies": [
+    "$NEXT_PUBLIC_API_URL",
+    "$NEXT_PUBLIC_LOCAL_API_URL",
+    "$NEXT_PUBLIC_SANITY_ID",
+    "$NEXT_PUBLIC_GOOGLE_MAP_API_KEY"
+  ]
+}

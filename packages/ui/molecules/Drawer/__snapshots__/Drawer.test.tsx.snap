@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer is flawlessly functional if changes styles accordingly to props 1`] = `
+<div
+  className="sc-hLBbgP Bttir top"
+  data-projection-id={1}
+  data-testid="drawerContainer"
+  style={
+    {
+      "transform": "translateY(384px) translateZ(0)",
+    }
+  }
+>
+  <div
+    className="sc-gswNZR ccrzIO top"
+    data-testid="pullerContainer"
+    onPointerDown={[Function]}
+  >
+    <hr
+      className="sc-dkrFOg cyywsF"
+      data-testid="lineContainer"
+    />
+  </div>
+  <div
+    className="sc-bcXHqe eYAEdL"
+    data-testid="contentContainer"
+  />
+</div>
+`;

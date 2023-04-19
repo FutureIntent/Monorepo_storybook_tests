@@ -1,0 +1,58 @@
+{
+  "name": "cryo-app-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "test": "turbo run test --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "partner:build": "turbo run build --filter cryo-app-partner",
+    "partner:dev": "turbo run dev --filter cryo-app-partner",
+    "partner-story:dev": "turbo run dev --filter cryo-app-partner --filter cryo-ui-kit",
+    "client:build": "turbo run build --filter cryo-app-therapies",
+    "client:dev": "turbo run dev --filter cryo-app-therapies",
+    "client-story:dev": "turbo run dev --filter cryo-app-therapies --filter cryo-ui-kit",
+    "storybook": "turbo run dev --filter cryo-ui-kit",
+    "test-story": "cd packages/ui && pnpm test",
+    "storybook:build": "turbo run build --filter cryo-ui-kit",
+    "svgr:monochrome": "turbo run svgr:monochrome --filter cryo-ui-kit && node packages/ui/createIconsStories.js",
+    "svgr:colored": "turbo run svgr:colored --filter cryo-ui-kit && node packages/ui/createColoredIconsStories.js",
+    "svgr": "turbo run svgr:monochrome --filter cryo-ui-kit && node packages/ui/createIconsStories.js && turbo run svgr:colored --filter cryo-ui-kit && node packages/ui/createColoredIconsStories.js",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@stylelint/postcss-css-in-js": "^0.38.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint-config-custom": "workspace:0.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1",
+    "turbo": "latest"
+  },
+  "lint-staged": {
+    "apps/**/*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "packages/ui/**/*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@7.13.5",
+  "dependencies": {
+    "react-hook-form": "^7.35.0",
+    "react-spring": "^9.5.4"
+  }
+}
